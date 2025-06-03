@@ -1,66 +1,65 @@
-# Linux-Admin-Learning
+# 🐧 Linux-Admin-Learning
 
-Welcome to my Linux Administration learning repository! 🐧  
+Welcome to my **Linux System Administration Learning Repository**!
 
-This repository documents my structured journey through a comprehensive Linux System Administration course. It includes detailed notes, practical exercises, shell scripts, and essential command references to help reinforce foundational and advanced Linux concepts.
+## 📚 Course Modules Overview
+
+> Each module below includes my notes, sample scripts, and configuration walkthroughs.
+
+### 🔹 Module 1: Introduction to Linux
+- What is Linux and its everyday use cases
+- Difference between Unix and Linux
+- Real-world relevance of Linux today
+
+### 🔹 Module 2: Setup & Configuration
+- Installing Linux via Oracle VirtualBox
+- GUI vs CLI environments
+- Installing CentOS / Red Hat Linux
+- VM creation, system boot, and Linux vs Windows comparison
+
+### 🔹 Module 3: System Access & File System
+- Accessing Linux via PuTTY (SSH)
+- Linux file system structure & navigation
+- File creation, management, search, wildcards, and symbolic links
+
+### 🔹 Module 4: Linux Fundamentals
+- Command syntax, tab completion, man pages
+- File permissions & ownership (`chmod`, `chown`)
+- Piping, filtering, and working with large files (`grep`, `awk`, `sort`, `uniq`)
+- File comparison & compression
+
+### 🔹 Module 5: System Administration
+- Text editing with `vi`, automation with `sed`
+- Managing users & groups, switching users, sudo access
+- Process management (`ps`, `top`, `kill`, `cron`, `at`)
+- Authentication methods: LDAP, AD, WinBIND
+- System health monitoring & recovery (SOS reports, `hostnamectl`, `uptime`)
+
+### 🔹 Module 6: Shell Scripting
+- Understanding shell types and history
+- Writing conditional scripts (`if`, `case`)
+- Loops (`for`, `while`, `until`)
+- Creating simple automation with Bash scripts
+
+### 🔹 Module 7: Networking, Servers & Updates
+- Linux network configuration (`ifconfig`, `ip`, `ping`, `netstat`, `tcpdump`)
+- System updates & patching with `yum` / `rpm`
+- File transfer: `scp`, `wget`, `curl`
+- DNS tools: `dig`, `nslookup`
+- NTP & time management: `chronyd`, `ntpdate`
+- Server setups: Apache, Sendmail, SSH, rsyslog
+- OS hardening practices for security
+
+### 🔹 Module 8: Disk Management & Boot Process
+- Linux boot stages and runlevels
+- Partitioning disks (`fdisk`, `lsblk`, `df`)
+- LVM setup and disk expansion (`pvcreate`, `vgcreate`, `lvcreate`)
+- Swap management and RAID overview
 
 
-### 🔹 Module 1 – Understanding Linux Concepts
-- What is Linux?
-- Unix vs. Linux
-- Everyday Use Cases
-- 
-### 🔹 Module 2 – Download, Install, and Configure
-- Oracle VirtualBox Setup
-- Linux Installation (CentOS, Red Hat)
-- GUI vs. CLI Environment
-- VM Management
-- Linux vs. Windows
 
 
-### 🔹 Module 3 – System Access and File System
-- PuTTY Configuration & SSH Access
-- File System Structure & Navigation
-- File Creation, Searching, and Linking
-- Wildcards & Text Tools
 
-
-### 🔹 Module 4 – Linux Fundamentals
-- Command Syntax
-- Permissions & Ownership (chmod, chown)
-- Pipes, Filters, and Compression Tools
-- Text Processing (cut, sort, grep, awk)
-- File Comparison Tools (diff, cmp)
-
-
-### 🔹 Module 5 – System Administration
-- vi Editor, sed Command
-- User & Group Management
-- Process Control & Monitoring (ps, top, kill, crontab)
-- Authentication: LDAP, AD, IDM
-- OS Utilities and Host Management
-- Root Recovery & SOS Reports
-
-
-### 🔹 Module 6 – Shell Scripting
-- Shell Types (bash, sh)
-- Scripting Basics: if, for, while, case
-- Aliases & Shell History
-
-### 🔹 Module 7 – Networking, Servers, and Updates
-- Networking Commands (ping, netstat, ifconfig)
-- Package Management (yum, rpm)
-- File Transfers (wget, curl, scp)
-- System Patching & Updates
-- Server Tools: Apache, DNS, Sendmail, SSH, rsyslog
-- System Hardening & OpenLDAP
-
-
-### 🔹 Module 8 – Disk Management and Run Levels
-- Linux Boot Process & Runlevels
-- Disk Partitioning and LVM
-- RAID Configuration
-- Swap Management and Disk Expansion
 
 
 
