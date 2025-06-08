@@ -1,0 +1,218 @@
+LINUX FILE PERMISSIONS - DETAILED NOTES
+=======================================
+
+SECTION 1: INTRODUCTION TO FILE PERMISSIONS
+-------------------------------------------
+Linux (and UNIX) is a multi-user operating system. Every file and directory within it can be made either accessible or protected from other users depending on the permissions set by the owner.
+
+Each user has full responsibility for managing access to their own files and directories by using the permission settings provided by the system.
+
+Proper understanding and control of file permissions are essential for system security, data integrity, and multi-user management.
+
+------------------------------------------------------------
+
+SECTION 2: TYPES OF PERMISSIONS
+-------------------------------
+There are three primary types of permissions that can be applied to files and directories:
+
+1. **Read (r)**  
+   - Allows the contents of a file to be read.  
+   - For a directory, it means the user can list the contents.
+
+2. **Write (w)**  
+   - Allows modification of a file.  
+   - For a directory, it allows the creation or deletion of files inside it.
+
+3. **Execute (x)**  
+   - Allows execution of a file as a program or script.  
+   - For a directory, it allows the user to enter (cd into) the directory.
+
+------------------------------------------------------------
+
+SECTION 3: PERMISSION CATEGORIES (USER CLASSES)
+-----------------------------------------------
+Each of the three permissions can be granted or denied to the following three user categories:
+
+1. **User (u)** - The owner of the file.
+2. **Group (g)** - Members of the group that owns the file.
+3. **Others (o)** - All other users on the system.
+4. **All (a)** - Applies changes to all of the above categories.
+
+------------------------------------------------------------
+
+SECTION 4: VIEWING PERMISSIONS
+------------------------------
+To view file or directory permissions, use the following command:
+
+Command:
+    ls -l
+
+Example output:
+    -rwxr-xr--
+
+Explanation of each part:
+- The first character represents the file type ('-' for file, 'd' for directory).
+- The next three characters represent permissions for the user (owner).
+- The next three are for the group.
+- The last three are for others.
+
+Example breakdown:
+    -rwxr-xr--
+    |  |  |  |
+    |  |  |  +-- Others: read and execute
+    |  |  +----- Group: read and execute
+    |  +-------- User: read, write, and execute
+    +----------- Regular file
+
+------------------------------------------------------------
+
+SECTION 5: MODIFYING PERMISSIONS - USING 'chmod'
+-------------------------------------------------
+Permissions can be changed using the 'chmod' command.
+
+Syntax:
+    chmod [who][operator][permission] filename
+
+Where:
+- [who] is u (user), g (group), o (others), a (all)
+- [operator] is + (add), - (remove), = (set exactly)
+- [permission] is r, w, or x
+
+Examples:
+
+1. To remove write permission from the group:
+   Command:
+       chmod g-w jerry
+
+2. To remove read permission from all (user, group, others):
+   Command:
+       chmod a-r jerry
+
+3. To remove write permission from the user (owner):
+   Command:
+       chmod u-w jerry
+
+4. To add both read and write permissions for the user:
+   Command:
+       chmod u+rw jerry
+
+After each command, you can verify the result using:
+    ls -l jerry
+
+------------------------------------------------------------
+
+SECTION 6: NUMERIC (OCTAL) PERMISSION FORMAT
+--------------------------------------------
+Permissions can also be set using numeric values, where each type of permission is represented by a number:
+
+- Read (r) = 4
+- Write (w) = 2
+- Execute (x) = 1
+
+The total value is calculated by adding these numbers:
+
+| Number | Binary | Meaning         | Permissions | Description                              |
+| ------ | ------ | --------------- | ----------- | ---------------------------------------- |
+| 0      | 000    | No permission   | ---         | No read, no write, no execute            |
+| 1      | 001    | Execute only    | --x         | Can run the file or enter directory      |
+| 2      | 010    | Write only      | -w-         | Can edit or delete, not read or execute  |
+| 3      | 011    | Write + Execute | -wx         | Can run and modify, but not read         |
+| 4      | 100    | Read only       | r--         | Can read contents, not change or execute |
+| 5      | 101    | Read + Execute  | r-x         | Can view and run, but not modify         |
+| 6      | 110    | Read + Write    | rw-         | Can view and modify, but not run         |
+| 7      | 111    | Full permission | rwx         | Can read, write, and execute             |
+
+- rwx = 4 + 2 + 1 = 7
+- rw- = 4 + 2 + 0 = 6
+- r-- = 4 + 0 + 0 = 4
+
+This numeric format is written as three digits:
+[User][Group][Others]
+
+Example:
+    chmod 754 filename
+
+Means:
+- User gets 7 = rwx (read, write, execute)
+- Group gets 5 = r-x (read, execute)
+- Others get 4 = r-- (read only)
+
+------------------------------------------------------------
+
+SECTION 7: CHANGING OWNERSHIP - 'chown' AND 'chgrp'
+---------------------------------------------------
+SECTION 7: CHANGING OWNERSHIP – 'chown' AND 'chgrp'
+===================================================
+
+In Linux, ownership of a file or directory is assigned to:
+- A **user (owner)** – usually the one who created the file.
+- A **group** – a collection of users who may also have access.
+
+Changing ownership is important when files need to be managed by another user or shared with a group.
+
+------------------------------------------------------------
+1. Change the **owner** of a file:
+    sudo chown newuser filename
+
+▶ This makes 'newuser' the new owner of the file.
+
+------------------------------------------------------------
+2. Change the **group** of a file:
+    sudo chgrp newgroup filename
+
+▶ Useful when you want a different group to manage or access the file.
+
+------------------------------------------------------------
+3. Change **both owner and group** at once:
+    sudo chown newuser:newgroup filename
+
+▶ A quick way to assign a new user and group together.
+
+------------------------------------------------------------
+4. Apply changes **recursively** to all files and subfolders:
+    sudo chown -R newuser:newgroup directory/
+
+▶ The `-R` (recursive) option ensures that ownership is updated for every file and folder inside the target directory.
+
+------------------------------------------------------------
+Example:
+    sudo chown simran:developers /home/projects/report.txt  
+    → Makes 'simran' the owner and 'developers' the group for the file.
+
+    sudo chown -R root:admin /opt/scripts/
+    → Applies ownership change to all files inside '/opt/scripts/'.
+
+------------------------------------------------------------
+
+
+------------------------------------------------------------
+
+SECTION 8: DIRECTORY PERMISSIONS - SPECIAL NOTES
+-------------------------------------------------
+Permissions on directories work a little differently than files:
+
+- **Read (r)** allows listing of directory contents.
+- **Write (w)** allows adding or deleting files inside the directory.
+- **Execute (x)** allows accessing the directory (using 'cd').
+
+Example:
+    drwxr-xr-x
+
+- 'd' indicates it is a directory.
+- The owner has read, write, and execute permissions.
+- Group and others have read and execute only.
+
+Note:
+If a directory does not have execute permission, even if you can read it, you **cannot access or enter** it.
+
+------------------------------------------------------------
+END OF NOTES
+------------------------------------------------------------
+
+
+
+
+ 
+
+
+

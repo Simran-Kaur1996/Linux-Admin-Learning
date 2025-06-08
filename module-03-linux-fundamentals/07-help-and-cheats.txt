@@ -1,0 +1,3 @@
+- whatis, --help, man
+- TAB completion, command history
+- Linux vs Windows command cheatsheet

@@ -1,0 +1,3 @@
+- Output/input redirection: >, >>, <, 2>
+- tee command
+- Pipes: |

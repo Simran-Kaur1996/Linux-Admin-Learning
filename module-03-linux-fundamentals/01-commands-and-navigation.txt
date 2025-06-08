@@ -1,0 +1,132 @@
+LINUX COMMANDS - SYNTAX, OPTIONS, AND USAGE
+===========================================
+
+SECTION 1: COMMAND STRUCTURE - SYNTAX
+-------------------------------------
+Most Linux commands follow a simple structure:
+
+    command [options] [arguments]
+
+Where:
+- **Command**: The name of the program or utility being executed.
+- **Options**: Modify the behavior of the command.
+- **Arguments**: Specify what the command should operate on (such as files or directories).
+
+Example:
+    ls -l /home/user
+
+Explanation:
+- `ls` is the command.
+- `-l` is an option that modifies the output format.
+- `/home/user` is the argument specifying the target directory.
+
+------------------------------------------------------------
+
+SECTION 2: OPTIONS
+------------------
+Options modify the way a command works. Important notes about options:
+
+- Usually begin with a hyphen (`-`) followed by a single letter.
+- Some commands support multiple options grouped together (e.g., `-lt`).
+- Long-form options sometimes begin with two hyphens (`--`), though this is more common in advanced commands.
+
+Examples:
+- `ls -l` displays detailed list view.
+- `rm -rf` forces deletion of directories and contents recursively.
+
+------------------------------------------------------------
+
+SECTION 3: ARGUMENTS
+--------------------
+Arguments are the inputs that commands work on. They usually refer to:
+
+- File names
+- Directory paths
+- Usernames
+- Process IDs, etc.
+
+Important notes:
+- Most commands require at least one argument.
+- Some commands assume a default argument if none is supplied.
+- Arguments may be optional or required depending on the command.
+
+Example:
+    cd /home/user/Documents
+
+Here:
+- `cd` is the command
+- `/home/user/Documents` is the argument
+
+------------------------------------------------------------
+
+SECTION 4: COMMONLY USED COMMANDS
+---------------------------------
+
+1. **pwd**
+   - Description: Displays the full path of the current working directory.
+   - Syntax: `pwd`
+
+2. **cd [directory]**
+   - Description: Changes the current directory.
+   - Example: `cd /home/user/Documents`
+
+3. **whoami**
+   - Description: Prints the currently logged-in username.
+   - Syntax: `whoami`
+
+4. **ls**
+   - Description: Lists files and directories in the current location.
+   - Syntax: `ls`
+   - Options:
+     - `-l`: Detailed view including permissions, owner, size, and date.
+     - `-t`: Sorts by modification time (newest first).
+     - `-r`: Reverses the sorting order.
+
+5. **ls -lt**
+   - Description: Lists contents sorted by modification time, newest first.
+
+6. **ls -ltr**
+   - Description: Lists contents sorted by modification time, oldest first (reverse order).
+
+7. **ls -l filename**
+   - Description: Displays detailed information for a specific file.
+
+8. **rm -f filename**
+   - Description: Force deletes a file without prompting for confirmation.
+
+9. **rm -r foldername**
+   - Description: Deletes a directory and its contents recursively.
+
+10. **man [command]**
+    - Description: Opens the manual/help page for a command.
+    - Example: `man ls`
+    - Tip: Press `q` to quit the manual.
+
+------------------------------------------------------------
+
+SECTION 5: COMMAND USAGE GROUPED BY FUNCTION
+--------------------------------------------
+
+**Navigation Commands**
+- `pwd`: Show current location
+- `cd`: Change directory
+
+**Listing & Viewing Commands**
+- `ls`: List directory contents
+- `ls -l`: Long list format
+- `ls -lt`: Sort by time (newest first)
+- `ls -ltr`: Sort by time (oldest first)
+
+**User Information**
+- `whoami`: Show current user
+
+**File/Directory Deletion**
+- `rm -f`: Force delete file
+- `rm -r`: Recursively delete folder
+
+**Manual/Help**
+- `man`: View command manuals (use `q` to exit)
+
+------------------------------------------------------------
+END OF NOTES
+------------------------------------------------------------

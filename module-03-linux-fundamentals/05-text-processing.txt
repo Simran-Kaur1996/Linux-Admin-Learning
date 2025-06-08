@@ -1,0 +1,1 @@
+- cut, awk, grep, sort, uniq, wc

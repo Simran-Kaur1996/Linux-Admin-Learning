@@ -1,0 +1,127 @@
+IMPORTANT THINGS TO REMEMBER IN LINUX
+=====================================
+
+1. ROOT ACCOUNT – SUPERUSER ACCESS
+----------------------------------
+- Linux has a special user account called **root**.
+- The root user is the most powerful account in the system.
+- It can:
+  - Create, modify, or delete user accounts.
+  - Access and modify any file on the system.
+  - Change system configurations and perform administrative tasks.
+- Use of root privileges should be done with caution.
+
+------------------------------------------------------------
+
+2. CASE SENSITIVITY IN LINUX
+----------------------------
+- Linux is a **case-sensitive** operating system.
+- This means:
+  - `File.txt`, `file.txt`, and `FILE.TXT` are all different files.
+- Always be precise with uppercase and lowercase letters in file and folder names.
+
+------------------------------------------------------------
+
+3. AVOID USING SPACES IN FILE AND DIRECTORY NAMES
+--------------------------------------------------
+- It is recommended to **avoid spaces** when creating file or folder names.
+- Instead, use:
+  - Hyphens (`-`)
+  - Underscores (`_`)
+  - CamelCase (e.g., MyFileName)
+
+Examples:
+- Good: `my_project.txt`, `backup-2024`, `UserData`
+- Bad: `my project.txt`, `backup 2024`
+
+------------------------------------------------------------
+
+4. UNDERSTANDING THE LINUX KERNEL
+---------------------------------
+- The **Linux kernel** is **not the entire operating system**.
+- It is the **core component** that manages communication between:
+  - The user and the hardware
+  - The software and system peripherals
+- It handles:
+  - Memory management
+  - Process management
+  - Device control
+  - System calls
+
+------------------------------------------------------------
+
+5. COMMAND-LINE INTERFACE (CLI) FIRST
+-------------------------------------
+- Linux is primarily a **Command-Line Interface (CLI)** based system.
+- Although some distributions offer a Graphical User Interface (GUI), most system tasks and configurations are done using the terminal.
+
+Benefits of CLI:
+- Faster operations
+- More control
+- Script automation
+
+------------------------------------------------------------
+
+6. FLEXIBILITY OF LINUX
+-----------------------
+- Linux is known for its **flexibility and customization**.
+- Unlike many operating systems, Linux allows users to:
+  - Choose and modify system components.
+  - Create shell scripts to automate tasks.
+  - Control permissions and configurations precisely.
+
+------------------------------------------------------------
+
+7. TYPES OF ACCESS TO LINUX
+---------------------------
+
+There are two main ways to access a Linux system:
+
+A. **Console Access**
+   - Direct physical access using:
+     - VGA
+     - HDMI
+     - DVI
+   - Common in data centers or local machines.
+
+B. **Remote Access**
+   - Connect to the system remotely using network protocols.
+   - Common method: **SSH (Secure Shell)**
+   - SSH clients:
+     - Windows: PuTTY, PowerShell, or built-in SSH (Windows 10 and above)
+     - Linux/Mac: Terminal (SSH is built-in)
+
+Command to connect via SSH:
+    ssh -l [username] [IP address]
+
+Example:
+    ssh -l simranjeet 192.168.1.10
+
+------------------------------------------------------------
+
+8. LINUX FLAVORS
+----------------
+There are many Linux distributions (also called "flavors"). Popular examples include:
+
+- Ubuntu
+- Debian
+- CentOS
+- Fedora
+- Red Hat Enterprise Linux (RHEL)
+- Arch Linux
+
+For beginners and system administration practice, **CentOS Stream 9** is recommended.
+
+------------------------------------------------------------
+
+STEPS TO INSTALL CENTOS 9 STREAM
+--------------------------------
+1. **Create a Virtual Machine (VM)** using Oracle VirtualBox or VMware.
+2. **Download CentOS 9 Stream ISO** from the official CentOS website.
+3. **Install CentOS 9 Stream** on the virtual machine.
+   - Set up disk partitions, root password, and user account during installation.
+   - Boot into the installed system and start practicing from the terminal.
+
+------------------------------------------------------------
+END OF NOTES
+------------------------------------------------------------
