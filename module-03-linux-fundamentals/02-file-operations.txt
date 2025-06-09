@@ -1,3 +1,96 @@
-- File creation/deletion: touch, mkdir, rm, rmdir
-- Moving/copying: mv, cp
-- Display: cat, head, tail, more, less
+=====================================
+📁 Linux File Management Commands
+=====================================
+
+-------------------------------------
+📌 1. File & Directory Creation/Deletion
+-------------------------------------
+
+🔸 Create a New Empty File:
+touch filename.txt
+
+🧪 Example:
+touch notes.txt
+
+🔸 Create a Directory (Folder):
+mkdir foldername
+
+🧪 Example:
+mkdir projects
+
+🔸 Remove a File:
+rm filename.txt
+
+🧪 Example:
+rm notes.txt
+
+🔸 Remove an Empty Directory:
+rmdir foldername
+
+🧪 Example:
+rmdir old_projects
+
+🔸 Remove Directory with Files Inside (Force Delete):
+rm -r foldername
+rm -rf foldername     # ⚠️ Be careful — deletes recursively without asking
+
+🧪 Example:
+rm -r projects
+
+-------------------------------------
+📌 2. Moving & Copying Files
+-------------------------------------
+
+🔸 Move or Rename a File or Folder:
+mv source target
+
+🧪 Examples:
+mv file.txt folder/             # Move file to folder
+mv oldname.txt newname.txt      # Rename file
+
+🔸 Copy a File:
+cp source destination
+
+🧪 Example:
+cp file.txt backup.txt
+
+🔸 Copy a Folder and Its Contents:
+cp -r source_folder destination_folder
+
+🧪 Example:
+cp -r project/ project_backup/
+
+-------------------------------------
+📌 3. Displaying File Contents
+-------------------------------------
+
+🔸 Show Entire File Content:
+cat filename.txt
+
+🔸 Show First 10 Lines (Default):
+head filename.txt
+
+🔸 Show Last 10 Lines (Default):
+tail filename.txt
+
+🔸 View File Page-by-Page (Forward Only):
+more filename.txt
+
+🔸 View File Page-by-Page (Scroll Up/Down):
+less filename.txt
+  - Press `q` to quit `less`
+
+🧪 Example Usage:
+cat report.txt
+head -n 5 report.txt
+tail -n 20 report.txt
+less bigfile.log
+
+=====================================
+🧠 Quick Tips:
+- Use `touch` to create scripts or logs quickly.
+- Use `less` instead of `cat` for large files.
+- Use `mv` to rename and relocate files in one command.
+- Always double-check before using `rm -rf`.
+
+=====================================

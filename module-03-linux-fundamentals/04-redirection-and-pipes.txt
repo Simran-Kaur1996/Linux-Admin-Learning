@@ -1,3 +1,147 @@
-- Output/input redirection: >, >>, <, 2>
-- tee command
-- Pipes: |
+==============================
+🔁 Linux Redirects & Pipes Notes
+==============================
+
+📌 Topic: Adding Text to Files (Redirects)
+------------------------------------------
+There are 3 simple ways to add text to a file in Linux:
+1. Using a text editor like `vi`
+2. Using Redirect operators: `>` or `>>`
+3. Using `echo` command with `>` or `>>`
+
+Examples:
+---------
+echo "Hello World" > file.txt     # Overwrites file.txt with new text
+echo "Another line" >> file.txt  # Appends text to file.txt
+
+-----------------------------------------------------
+📥 Input and Output Redirects (>, >>, <, 2>, stdin, stdout, stderr)
+-----------------------------------------------------
+
+In Linux, there are 3 standard streams:
+
+1. Standard Input  (stdin)  - File Descriptor: 0
+2. Standard Output (stdout) - File Descriptor: 1
+3. Standard Error  (stderr) - File Descriptor: 2
+
+--------------------------------------------
+📤 Output Redirection (stdout = 1)
+--------------------------------------------
+- By default, command output goes to the screen.
+- You can redirect it to a file.
+
+Syntax:
+-------
+command > filename     # Overwrites the file
+command >> filename    # Appends to the file
+
+Examples:
+---------
+ls -l > listings       # Save directory listing to 'listings'
+pwd > findpath         # Save present path to 'findpath'
+ls -la >> listings     # Append more listings to the same file
+
+--------------------------------------------
+📥 Input Redirection (stdin = 0)
+--------------------------------------------
+- Used to feed a file as input to a command.
+
+Examples:
+---------
+cat < listings                           # Reads content of 'listings'
+mail -s "Office Memo" user@domain.com < memo.txt
+
+--------------------------------------------
+⚠️ Error Redirection (stderr = 2)
+--------------------------------------------
+- If a command fails, the error message goes to stderr.
+- You can redirect it to a file using `2>`.
+
+Examples:
+---------
+ls -l /root 2> errorfile                 # Save errors to 'errorfile'
+telnet localhost 2> telnet_errors.txt   # Capture telnet errors
+
+--------------------------------------------
+🔄 Combined Output and Error (stdout + stderr)
+--------------------------------------------
+- To capture both standard output and error in one file:
+
+Example:
+--------
+ls /root /home &> combined_output.txt
+
+--------------------------------------------
+📚 Summary Table
+--------------------------------------------
+
+| Symbol | Description                         | Example                          |
+|--------|-------------------------------------|----------------------------------|
+|   >    | Redirect output (overwrite)         | ls > output.txt                  |
+|  >>    | Redirect output (append)            | echo "Done" >> log.txt           |
+|   <    | Redirect input from a file          | cat < input.txt                  |
+|  2>    | Redirect error output               | ls /root 2> errors.txt           |
+|  &>    | Redirect both output and errors     | ls /root &> all_output.txt       |
+|   |    | Pipe output to another command      | ls | grep "file"                 |
+
+============================================================
+✨ Tip: Use these in scripts or commands to control where your data goes—screen, file, or another command!
+============================================================
+
+===============================
+🧾 tee Command in Linux
+===============================
+
+🔹 Purpose:
+The `tee` command is used to **store** and **view** the output of a command at the same time.
+
+It reads standard input, displays it on the terminal (stdout), and writes it to a file.
+
+--------------------------------
+📌 Syntax:
+command | tee [options] filename
+
+📌 Common Option:
+-a    → Append the output to the file instead of overwriting it
+
+--------------------------------
+📌 Example:
+echo "David Puddy is Elaine's boyfriend" | tee -a eliane-david
+
+📌 Explanation:
+- `echo` sends the text as output
+- `tee -a eliane-david`:
+   → Appends the text to the file `elaine-david`
+   → Also displays the output on the terminal
+
+--------------------------------
+✅ Without tee:
+echo "Hello" > file.txt
+✔️ Writes to file
+❌ Doesn't show on screen
+
+✅ With tee:
+echo "Hello" | tee file.txt
+✔️ Writes to file
+✔️ Shows output on screen
+
+--------------------------------
+📌 When to Use:
+- Logging output while still seeing it live
+- Saving command output during automation or scripts
+- Debugging or monitoring real-time command behavior
+
+===============================
+
+ Pipes a pipes is used by shell to connect the ouput of one command directly to the input of another command
+
+ the symbol for a pipe is the vertical bar(|) the command Syntax
+
+ command1 [arguments]  | command2 [arguments]
+
+ Executing mutiple command with ;
+
+ example 
+            Command = ls ; pwd ; whoami
+            works inpedently
+            one fails next one will still run

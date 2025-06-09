@@ -1,3 +1,146 @@
-- File comparison: diff, cmp
-- Compression: tar, gzip, gunzip, truncate
-- Combine/split files: cat, split
+============================
+📂 Linux File Utilities – Notes
+============================
+
+SECTION 1: FILE COMPARISON
+============================
+
+1. diff – Show line-by-line differences
+---------------------------------------
+- Use: Compare two text files and show changes needed to make them identical
+
+Syntax:
+  diff file1.txt file2.txt
+
+Options:
+  -u      → Unified format (side-by-side with context)
+  -c      → Context format
+  -y      → Side-by-side view
+
+Examples:
+  diff old.txt new.txt                → Basic diff
+  diff -u config1.conf config2.conf   → Unified diff (used in patches)
+  diff -y file1 file2                 → Side-by-side comparison
+
+Use case:
+  diff -u version1.sh version2.sh > changes.patch
+
+
+2. cmp – Byte-by-byte comparison
+--------------------------------
+- Use: Compare two files and show first mismatch (binary/text)
+- Quieter than diff, great for binary files
+
+Syntax:
+  cmp file1 file2
+
+Options:
+  -l      → Show all differing bytes
+  -s      → Silent (exit code only)
+
+Examples:
+  cmp photo1.jpg photo2.jpg           → Check if identical
+  cmp -l file1.bin file2.bin          → List all byte-level differences
+  cmp -s a.txt b.txt && echo "Same"   → Quiet comparison with result
+
+==================================================
+
+SECTION 2: COMPRESSION & ARCHIVING
+==================================================
+
+3. tar – Archive multiple files/directories
+-------------------------------------------
+- Use: Combine files/folders into one .tar file
+
+Syntax:
+  tar [options] archive_name.tar files
+
+Options:
+  -c      → Create archive
+  -x      → Extract archive
+  -t      → List contents
+  -v      → Verbose
+  -f      → File name
+
+Examples:
+  tar -cvf backup.tar my_folder/       → Create tar
+  tar -xvf backup.tar                  → Extract tar
+  tar -tvf backup.tar                  → View tar content
+
+4. gzip – Compress a file (creates .gz)
+---------------------------------------
+- Use: Compress files to save space
+- Removes original file by default
+
+Syntax:
+  gzip filename
+
+Examples:
+  gzip log.txt                        → Creates log.txt.gz
+  gzip -k report.txt                 → Keep original (uses -k)
+
+5. gunzip – Decompress .gz file
+-------------------------------
+- Use: Uncompress .gz back to original
+
+Syntax:
+  gunzip filename.gz
+
+Examples:
+  gunzip log.txt.gz                   → Restores log.txt
+
+6. truncate – Shrink or extend file size
+----------------------------------------
+- Use: Reduce file size without opening file
+
+Syntax:
+  truncate -s SIZE file
+
+Examples:
+  truncate -s 0 log.txt               → Clears file content
+  truncate -s 100K dummy.txt          → Make 100KB test file
+
+==================================================
+
+SECTION 3: COMBINE & SPLIT FILES
+==================================================
+
+7. cat – Concatenate and view files
+-----------------------------------
+- Use: Display or merge multiple files
+
+Syntax:
+  cat file1 file2 > combined.txt
+
+Examples:
+  cat file.txt                        → Print to screen
+  cat a.txt b.txt > all.txt           → Merge into all.txt
+
+Use case: View with line numbers
+  cat -n file.txt
+
+8. split – Split file into chunks
+---------------------------------
+- Use: Break large files into smaller pieces
+
+Syntax:
+  split -b SIZE filename prefix
+
+Options:
+  -b : bytes (e.g., 1M = 1 MB)
+  -l : lines
+
+Examples:
+  split -b 1M bigfile.log part_       → 1MB chunks named part_aa, part_ab…
+  split -l 1000 file.txt lines_       → Split every 1000 lines
+
+To combine back:
+  cat part_* > full_file.txt
+
+==================================================
+🌟 PRO TIP: Use `file` to check file type
+--------------------------------------------------
+  file archive.gz       → Show if it's gzip-compressed
+  file image.png        → Show binary/mime type
+==================================================
+

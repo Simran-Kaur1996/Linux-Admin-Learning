@@ -139,7 +139,6 @@ Means:
 
 ------------------------------------------------------------
 
-SECTION 7: CHANGING OWNERSHIP - 'chown' AND 'chgrp'
 ---------------------------------------------------
 SECTION 7: CHANGING OWNERSHIP – 'chown' AND 'chgrp'
 ===================================================
@@ -183,7 +182,64 @@ Example:
     → Applies ownership change to all files inside '/opt/scripts/'.
 
 ------------------------------------------------------------
+Access Control List(ACL):
+🔐 Access Control List (ACL) in Linux
 
+ACL (Access Control List) provides an advanced, flexible permission mechanism beyond standard Unix file permissions.
+It allows permissions to be granted to specific users or groups — even if they are not the owner or part of the file’s group.
+
+📌 Why Use ACL?
+
+Real-Life Scenario:
+Suppose you have a file, and you want to give read or write access to a user who is not part of the group owning the file.
+Instead of adding the user to the group, you can directly assign permissions to that user using ACL.
+
+💡 Benefits of ACL
+- More fine-grained control over file and directory permissions
+- Assign different access rights to multiple users and groups
+- ACL entries can be inherited by subdirectories and files
+- Supported in ext3, ext4, XFS, and other modern filesystems
+
+🧾 Key Commands
+
+Command      | Description
+-------------|--------------------------------------------------
+setfacl      | Set or modify ACL entries
+getfacl      | View ACL entries on a file or directory
+
+🔧 Common Usage Examples
+
+✅ Add ACL for a User
+setfacl -m u:username:r-- filename
+Gives read-only permission to 'username' on 'filename'.
+
+✅ Add ACL for a Group
+setfacl -m g:groupname:rw- filename
+Gives read and write access to 'groupname'.
+
+✅ View ACL Entries
+getfacl filename
+Displays current ACL permissions for the file.
+
+✅ Remove Specific ACL Entry
+setfacl -x u:username filename
+Removes the ACL permission for a specific user.
+
+✅ Remove All ACL Entries
+setfacl -b filename
+Clears all ACL entries, restoring traditional permissions.
+
+✅ Set Default ACL (Inheritance for New Files)
+setfacl -d -m u:username:rw- directoryname
+All files created in this directory will inherit this ACL rule.
+
+📖 Note from Linux Man Pages
+“Access Control Lists (ACLs) are used to define more fine-grained discretionary access rights for files and directories.”
+
+🧠 Summary
+- ACLs are not a replacement but an extension to traditional Unix permissions.
+- Helps in multi-user environments where access needs to be more granular.
+- Easy to manage with setfacl and getfacl.
 
 ------------------------------------------------------------
 

@@ -1,3 +1,18 @@
 - whatis, --help, man
 - TAB completion, command history
 - Linux vs Windows command cheatsheet
+
+help commands : 3 commands 
+1 whatis command
+2 command --help
+3. man command
+
+TAB completion and Up arrow: htting TAB key completes the available commands,
+files or directories
+1.chm TAB
+2.ls j<TAB>
+3.cd Des<TAB>
+
+hitting up arrow key on the keyborad returns the last command ran.
+
+
